@@ -6,6 +6,9 @@ $ source env_cvsuploader/bin/activate
 (env_cvsuploader) $ git clone https://...
 (env_cvsuploader) $ cd ejercicios
 (env_cvsuploader) /ejercicios$ pip install -r requirements.txt
+(env_cvsuploader) /ejercicios$ cd csvuploader
+(env_cvsuploader) /ejercicios/csvuploader$ python manage.py makemigrations
+(env_cvsuploader) /ejercicios/csvuploader$ python manage.py migrate
 ```
 
 ### Ejercicio 1 (Merge Sort)
@@ -22,3 +25,6 @@ Para probarlo simplemente descomente el código comentando en ejercicios/mergeso
 >La plataforma procesa el archivo y obtiene segun un pais seleccionado previamente:
 * El costo total de todas los items de ese pais
 * El costo promedio de todas los items de ese pais
+```sh
+(env_cvsuploader) /ejercicios/csvuploader$ python manage.py runserver
+```

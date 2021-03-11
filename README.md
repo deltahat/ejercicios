@@ -31,7 +31,8 @@ Para probarlo simplemente descomente el código comentando en ejercicios/mergeso
 * Todos los archivos csv subidos
 * Todos los calculos de un archivo en particular
 
-La documentación de la API está en [este link](https://app.swaggerhub.com/apis-docs/deltahat/CsvUploader/1.0.0/){:target="_blank"}
+La documentación de la API está en [este link](https://app.swaggerhub.com/apis-docs/deltahat/CsvUploader/1.0.0/)
+
 ```sh
 (env_cvsuploader) /ejercicios/csvuploader$ python manage.py runserver
 ```

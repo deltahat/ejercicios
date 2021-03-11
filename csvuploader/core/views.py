@@ -3,12 +3,14 @@ from rest_framework.views import APIView
 from rest_framework.parsers import MultiPartParser, FormParser
 from rest_framework.response import Response
 from rest_framework import status
+
 from .serializers import FileSerializer
 from .models import File, Calculate
 
 import os
 from django.conf import settings
 import pandas as pd
+
 
 class FileView(APIView):
 	parser_classes = (MultiPartParser, FormParser)
@@ -25,13 +27,14 @@ class FileView(APIView):
 			return Response(file_serializer.errors, status=status.HTTP_400_BAD_REQUEST)
 
 
-
 class ListFiles(APIView):
 	def get(self, request, *args, **kwargs):
-		context =  [{'file_name':files.file.name, 'file_url':files.file.url, 'timestamp':files.timestamp} for files in File.objects.all()]
-		return Response((context), status=status.HTTP_201_CREATED)
-
-
+		if File.objects.first():
+			context =  [{'file_name':files.file.name, 'file_url':files.file.url, 'timestamp':files.timestamp} for files in File.objects.all()]
+			return Response((context), status=status.HTTP_201_CREATED)
+		else:
+			context = [{}]
+			return Response(context)
 
 
 class NewCalculate(APIView):
@@ -87,3 +90,22 @@ class NewCalculate(APIView):
 			return Response(context, status=status.HTTP_201_CREATED)
 		else:
 			return Response({"message": "Error. 'file_name' and 'country' are required."})
+
+
+class ListFileCalculations(APIView):
+	def get(self, request, *args, **kwargs):
+		if self.kwargs['file_name']:
+			file_name = self.kwargs['file_name']
+			context = [
+				{
+					"file_name": calculate.file_name,
+					"file_url": calculate.file_url,
+					"country": calculate.country,
+					"total_cost": calculate.total_cost,
+					"average_cost": calculate.average_cost,
+					"timestamp": calculate.timestamp
+				} for calculate in Calculate.objects.all().filter(file_name=file_name)
+			]
+			return Response((context), status=status.HTTP_201_CREATED)
+		else:
+			return Response({"message": "Error. 'file_name' is required."})

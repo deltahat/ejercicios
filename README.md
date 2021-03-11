@@ -3,7 +3,7 @@
 ```sh
 $ virtualenv -p python3 env_csvuploader
 $ source env_csvuploader/bin/activate
-(env_csvuploader) $ git clone https://...
+(env_csvuploader) $ git clone https://github.com/deltahat/ejercicios.git
 (env_csvuploader) $ cd ejercicios
 (env_csvuploader) /ejercicios$ pip install -r requirements.txt
 (env_csvuploader) /ejercicios$ cd csvuploader

@@ -22,9 +22,17 @@ Para probarlo simplemente descomente el código comentando en ejercicios/mergeso
 > CVS uploader permite subir un archivo en formato .CSV con al menos dos columnas:
 * country
 * budget
->La plataforma procesa el archivo y obtiene segun un pais seleccionado previamente:
+
+>La plataforma procesa el archivo y obtiene segun un pais por defecto (USA):
 * El costo total de todas los items de ese pais
 * El costo promedio de todas los items de ese pais
+
+> Tambien se pueden conocer:
+* Todos los archivos csv subidos
+* Todos los calculos de un archivo en particular
+
+La documentación de la API está en [este link](https://app.swaggerhub.com/apis-docs/deltahat/CsvUploader/1.0.0/)
+
 ```sh
 (env_cvsuploader) /ejercicios/csvuploader$ python manage.py runserver
 ```

@@ -51,6 +51,7 @@ class NewCalculate(APIView):
 			average_cost = 10.20
 
 			'''
+			# DEBUG
 			csv_route = settings.MEDIA_ROOT+"/"+file_name
 			print(csv_route)
 			data = pd.read_csv(csv_route, names=['country','budget'])
@@ -64,16 +65,23 @@ class NewCalculate(APIView):
 			'''
 
 			# Registro en base de datos
-			#Calculate.objects.
+			calculate = Calculate.objects.create(
+				file_name = file_name,
+				file_url = file_url,
+				country = country,
+				total_cost = total_cost,
+				average_cost = average_cost
+			)
+			calculate.save()
 
 			# Armo respuesta
 			context = {
-				"file_name": file_name,
-				"file_url": file_url,
-				"country": country,
-				"total_cost": total_cost,
-				"average_cost": average_cost,
-				"timestamp": "2021-01-21T17:32:28Z"
+				"file_name": calculate.file_name,
+				"file_url": calculate.file_url,
+				"country": calculate.country,
+				"total_cost": calculate.total_cost,
+				"average_cost": calculate.average_cost,
+				"timestamp": calculate.timestamp
 			}
 
 			return Response(context, status=status.HTTP_201_CREATED)

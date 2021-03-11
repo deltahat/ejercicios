@@ -8,6 +8,6 @@ class Calculate(models.Model):
 	file_name = models.CharField(max_length=2000, blank=False, null=False)
 	file_url = models.CharField(max_length=2000, blank=False, null=False)
 	country = models.CharField(max_length=20, blank=False, null=False)
-	total_cost = models.FloatField(blank=True, null=True)
-	average_cost = models.FloatField(blank=True, null=True)
+	total_cost = models.FloatField(blank=False, null=False, default=0)
+	average_cost = models.FloatField(blank=False, null=False, default=0)
 	timestamp = models.DateTimeField(auto_now_add=True)

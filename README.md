@@ -1,14 +1,14 @@
 # Ejercicios resueltos
 ## Intalación
 ```sh
-$ virtualenv -p python3 env_cvsuploader
-$ source env_cvsuploader/bin/activate
-(env_cvsuploader) $ git clone https://...
-(env_cvsuploader) $ cd ejercicios
-(env_cvsuploader) /ejercicios$ pip install -r requirements.txt
-(env_cvsuploader) /ejercicios$ cd csvuploader
-(env_cvsuploader) /ejercicios/csvuploader$ python manage.py makemigrations
-(env_cvsuploader) /ejercicios/csvuploader$ python manage.py migrate
+$ virtualenv -p python3 env_csvuploader
+$ source env_csvuploader/bin/activate
+(env_csvuploader) $ git clone https://...
+(env_csvuploader) $ cd ejercicios
+(env_csvuploader) /ejercicios$ pip install -r requirements.txt
+(env_csvuploader) /ejercicios$ cd csvuploader
+(env_csvuploader) /ejercicios/csvuploader$ python manage.py makemigrations
+(env_csvuploader) /ejercicios/csvuploader$ python manage.py migrate
 ```
 
 ### Ejercicio 1 (Merge Sort)
@@ -16,7 +16,8 @@ $ source env_cvsuploader/bin/activate
 Para probarlo simplemente descomente el código comentando en ejercicios/mergesort.py y ejecutelo:
 
 ```sh
-(env_cvsuploader) /ejercicios$ python mergesort.py
+(env_csvuploader) $ cd ejercicios
+(env_csvuploader) /ejercicios$ python mergesort.py
 ```
 ### Ejercicio 2 (CVS uploader)
 > CVS uploader permite subir un archivo en formato .CSV con al menos dos columnas:
@@ -31,8 +32,13 @@ Para probarlo simplemente descomente el código comentando en ejercicios/mergeso
 * Todos los archivos csv subidos
 * Todos los calculos de un archivo en particular
 
-La documentación de la API está en [este link](https://app.swaggerhub.com/apis-docs/deltahat/CsvUploader/1.0.0/)
-
+Para correr el servidor:
 ```sh
-(env_cvsuploader) /ejercicios/csvuploader$ python manage.py runserver
+(env_csvuploader) /ejercicios/$ cd csvuploader
+(env_csvuploader) /ejercicios/csvuploader$ python manage.py runserver
 ```
+
+El servidor corre en [http://localhost:8000](http://localhost:8000)
+
+#### Documentación
+La documentación de la API está en [este link](https://app.swaggerhub.com/apis-docs/deltahat/CsvUploader/1.0.0/)
